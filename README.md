@@ -64,7 +64,52 @@ python3 codigo/main.py
 
 A execução é automática e apresenta o balanço energético, a reserva das baterias, a previsão eólica e as decisões operacionais.
 
-## 5. Gerenciamento energético
+## 5. Exemplo de entrada e saída
+
+A simulação é executada automaticamente. **Não há entrada digitada pelo usuário**: os parâmetros são definidos no arquivo `codigo/dados.py`.
+
+**Dados de entrada do cenário inicial:**
+
+| Parâmetro | Valor |
+|---|---:|
+| Geração solar | 40 kW |
+| Geração eólica | 25 kW |
+| Consumo total dos módulos | 45 kW |
+| Capacidade da bateria | 200 kWh |
+| Reserva inicial | 120 kWh |
+| Intervalo simulado | 1 hora |
+| Velocidade prevista do vento | 11 m/s |
+
+**Saída obtida ao executar `python codigo/main.py` na raiz do repositório:**
+
+```text
+=== MISSÃO AURORA SIGER - FASE 3 ===
+
+--- BALANÇO ENERGÉTICO ---
+Geração total: 65.00 kW
+Consumo total: 45.00 kW
+Balanço: 20.00 kW
+
+--- RESERVA ENERGÉTICA ---
+Reserva inicial: 120.00 kWh
+Reserva projetada sem economia: 140.00 kWh
+
+--- PREVISÃO EÓLICA ---
+Vento previsto: 11 m/s
+Geração eólica prevista: 26.35 kW
+Geração total prevista: 66.35 kW
+Previsão: geração suficiente para o consumo.
+
+--- DECISÃO OPERACIONAL ---
+Situação: EXCEDENTE
+Excedente disponível para armazenamento, até a capacidade das baterias.
+
+Gráfico salvo em: imagens/regressao_eolica.png
+```
+
+Esse exemplo corresponde ao cenário inicial cadastrado no projeto. Os resultados mudam se os dados da simulação forem alterados.
+
+## 6. Gerenciamento energético
 
 O sistema considera cinco módulos consumidores: Habitação, Energia, Suporte Médico, Logística e Pesquisa Científica.
 
@@ -78,7 +123,7 @@ As principais operações são:
 
 As recomendações são simuladas e não alteram automaticamente o funcionamento dos módulos.
 
-## 6. Previsão de geração eólica
+## 7. Previsão de geração eólica
 
 A previsão utiliza **regressão linear simples com Scikit-learn**, relacionando velocidade do vento e geração energética.
 
@@ -88,7 +133,7 @@ O Matplotlib é utilizado para gerar o gráfico com os dados históricos, a reta
 
 Os cálculos, as premissas e as limitações do modelo estarão detalhados no relatório técnico.
 
-## 7. Testes complementares
+## 8. Testes complementares
 
 Os testes verificam os cálculos energéticos, as regras de decisão e a regressão linear, incluindo cenários normais e excepcionais.
 
@@ -106,7 +151,7 @@ Um `AssertionError` indica que alguma verificação não foi satisfeita.
 
 As simulações de exceção não alteram os dados do cenário principal.
 
-## 8. Relatório técnico
+## 9. Relatório técnico
 
 O relatório completo será disponibilizado em [**Relatório Aurora Siger - Fase 3 (PDF)**](docs/relatorio_aurora_siger_fase_3.pdf).
 
