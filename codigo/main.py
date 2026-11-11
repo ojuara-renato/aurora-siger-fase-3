@@ -11,6 +11,7 @@ def main():
     reserva_projetada=atualizar_reserva(reserva_atual,balanco,capacidade_total)
     resultado=avaliar_situacao_energetica(geracao_total,consumo_total,consumo_essencial,reserva_atual,reserva_projetada,capacidade_total)
     reserva_com_economia=None
+
     if resultado['recomendar_economia']:
         balanco_economia=calcular_balanco_energetico(geracao_total,consumo_essencial)
         reserva_com_economia=atualizar_reserva(reserva_atual,balanco_economia,capacidade_total)
@@ -30,14 +31,17 @@ def main():
     print(f"Vento previsto: {vento_previsto} m/s")
     print(f"Geração eólica prevista: {previsao:.2f} kW")
     print(f"Geração total prevista: {geracao_prevista:.2f} kW")
+
     if deficit_previsto:
         print("ALERTA PREVENTIVO: possível déficit na próxima hora.")
     else:
         print("Previsão: geração suficiente para o consumo.")
     print("\n--- DECISÃO OPERACIONAL ---")
     print(f"Situação: {resultado['situacao']}")
+
     if resultado['reserva_baixa']:
         print("ALERTA: reserva atual ou projetada em 20% ou menos.")
+
     if resultado['situacao_critica']:
         disponivel = geracao_total + reserva_atual
         necessario = consumo_essencial
@@ -45,6 +49,7 @@ def main():
         print(f"Energia disponível em 1 h: {disponivel:.2f} kWh")
         print(f"Energia necessária em 1 h: {necessario:.2f} kWh")
         print(f"Energia em falta: {necessario - disponivel:.2f} kWh")
+
     if resultado['recomendar_economia']:
         print("Recomendação: desligar temporariamente os módulos não essenciais.")
         print(f"Consumo original: {consumo_total:.2f} kW")
@@ -54,8 +59,11 @@ def main():
         limite = capacidade_total * 0.20
         if reserva_atual > limite and reserva_projetada <= limite and reserva_com_economia > limite:
             print("A economia recomendada evitaria atingir o limite de 20%.")
+
     if resultado['armazenar_excedente']:
         print("Excedente disponível para armazenamento, até a capacidade das baterias.")
     print("\nGráfico salvo em: imagens/regressao_eolica.png")
+
+
 if __name__ == '__main__':
     main()

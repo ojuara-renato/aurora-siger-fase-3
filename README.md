@@ -70,15 +70,15 @@ A simulação é executada automaticamente. **Não há entrada digitada pelo usu
 
 **Dados de entrada do cenário inicial:**
 
-| Parâmetro | Valor |
-|---|---:|
-| Geração solar | 40 kW |
-| Geração eólica | 25 kW |
-| Consumo total dos módulos | 45 kW |
-| Capacidade da bateria | 200 kWh |
-| Reserva inicial | 120 kWh |
-| Intervalo simulado | 1 hora |
-| Velocidade prevista do vento | 11 m/s |
+| Parâmetro                    |   Valor |
+|------------------------------|--------:|
+| Geração solar                |   40 kW |
+| Geração eólica               |   25 kW |
+| Consumo total dos módulos    |   45 kW |
+| Capacidade da bateria        | 200 kWh |
+| Reserva inicial              | 120 kWh |
+| Intervalo simulado           |  1 hora |
+| Velocidade prevista do vento |  11 m/s |
 
 **Saída obtida ao executar `python codigo/main.py` na raiz do repositório:**
 
